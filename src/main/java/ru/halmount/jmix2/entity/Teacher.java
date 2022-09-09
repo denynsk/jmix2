@@ -5,6 +5,7 @@ import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
@@ -25,6 +26,17 @@ public class Teacher {
     @InstanceName
     @Column(name = "DESCRIPTION")
     private String description;
+
+    @OneToMany(mappedBy = "teacher")
+    private List<Reestr> reestrs;
+
+    public List<Reestr> getReestrs() {
+        return reestrs;
+    }
+
+    public void setReestrs(List<Reestr> reestrs) {
+        this.reestrs = reestrs;
+    }
 
     public String getDescription() {
         return description;
